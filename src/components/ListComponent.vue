@@ -19,24 +19,19 @@ export default {
     props: ['providers'],
     data(){
         return{
-            search: '',
-            providersFilter: []
+            search: ''
         }
     },
-    watch:{
-        search(){
+    computed:{
+        providersFilter(){
             const search = this.search.toUpperCase()
 
-            this.providersFilter = this.providers.filter(provider => {
+            return this.providers.filter(provider => {
                 const session = provider.sessions[0].name.toUpperCase()
                 const name = provider.name.toUpperCase()
                 return session.indexOf(search) != -1 || name.indexOf(search) != -1
             })
-        },
-        providers(){
-            this.providersFilter = this.providers
         }
-    } 
-    
+    }    
 }
 </script>

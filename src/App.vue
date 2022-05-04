@@ -1,11 +1,10 @@
 <template>
   <div class="container py-5">
-      <list-component :providers="providers"/>
+      <list-component :providers="computedProviders"/>
   </div>
 </template>
 
 <script>
-/* eslint-disable */
 import axios from "axios"
 
 import moment from 'moment'
@@ -13,8 +12,7 @@ import ListComponent from './components/ListComponent'
 export default{  
   data(){
     return {
-        providers: [],
-        newProviders: []                 
+        providers: []                
     }
   },
   components:{
@@ -23,9 +21,9 @@ export default{
   mounted(){
     this.get()      
   }, 
-  watch:{
-    providers(){
-      this.newProviders = this.providers.map((provider) => {        
+  computed:{
+    computedProviders(){
+      return this.providers.map((provider) => {        
         if(provider.modified){
           provider.modified = moment(provider.modified).format("MMMM DD, YYYY")
         }

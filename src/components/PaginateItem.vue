@@ -12,11 +12,24 @@
     </nav>
 </template>
 <script>
-/* eslint-disable */
 export default {
     name: 'PaginateItem',
     emits: ["changePage"],
-    props: ['totalPage', 'currentPage', 'maxVisible'],
+    props: {
+        totalPage: {
+            type: Number,
+            required: true
+        },
+        currentPage:{
+            type: Number,
+            default: 1,
+            required: true
+        },
+        maxVisible: {
+            type: Number,
+            default: 5
+        }
+    },
     computed:{
         pages() {          
             const media = Math.floor(this.maxVisible / 2)        

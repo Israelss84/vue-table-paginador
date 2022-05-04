@@ -20,11 +20,15 @@
                 </tr>
             </tbody>
         </table>
-        <paginate-item :totalPage="totalPage" :currentPage="currentPage" :maxVisible="5" @changePage="changePage" />
+        <paginate-item 
+            :totalPage="totalPage" 
+            :currentPage="currentPage" 
+            :maxVisible="10"  
+            @changePage="changePage" 
+        />
     
 </template>
 <script>
-/* eslint-disable */
 import PaginateItem from './PaginateItem'
 export default {
     name:'CardTable',
